@@ -1,384 +1,624 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Para la chica mas Linda 🌻🍁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Greysi Mabel 🌷❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Quicksand", sans-serif;
+      color: #fff;
+      position: relative;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 183, 204, 0.30), transparent 25%),
+        radial-gradient(circle at 85% 25%, rgba(255, 210, 220, 0.22), transparent 25%),
+        radial-gradient(circle at 50% 100%, rgba(183, 67, 98, 0.22), transparent 35%),
+        linear-gradient(135deg, #17070e 0%, #2d0b18 45%, #16060d 100%);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: 0;
+    }
+
+    .background-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+      z-index: 0;
+    }
+
+    .glow-1 {
+      top: -250px;
+      left: -180px;
+      background: rgba(255, 105, 150, 0.12);
+    }
+
+    .glow-2 {
+      right: -200px;
+      bottom: -260px;
+      background: rgba(255, 130, 170, 0.10);
+    }
+
+    .container {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 120px;
+      padding-bottom: 100px;
+    }
+
+    .season-message {
+      position: absolute;
+      bottom: calc(100% + 45px);
+      width: 100%;
+      text-align: center;
+      color: rgba(255, 235, 241, 0.82);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .season-message::before {
+      content: "♡";
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.2rem;
+      color: #e9a0b3;
+    }
+
+    .season-message span {
+      display: block;
+      margin-top: 7px;
+      font-family: "Great Vibes", cursive;
+      font-size: 2.1rem;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #f4b6c7;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* =====================================================
+       SOBRE
+    ===================================================== */
+
+    .envelope {
+      --duration: 900ms;
+      --envelope-width: 330px;
+      --envelope-height: 195px;
+
+      --envelope-bg: #b54d6b;
+      --envelope-bg-side: #963651;
+      --envelope-bg-bottom: #a8405e;
+
+      --letter-bg: #fffaf7;
+      --letter-text: #7d2741;
+
+      position: relative;
+      width: var(--envelope-width);
+      height: var(--envelope-height);
+      perspective: 1200px;
+      cursor: pointer;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.40));
+      overflow: visible;
+      z-index: 10;
+    }
+
+    @media (min-width: 720px) {
+      .envelope {
+        --envelope-width: 580px;
+        --envelope-height: 340px;
+      }
+    }
+
+    .envelope::after {
+      content: "";
+      position: absolute;
+      top: 108%;
+      left: 50%;
+      width: 80%;
+      height: 38px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      filter: blur(16px);
+      z-index: -1;
+    }
+
+    .envelope-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      transform-style: preserve-3d;
+      transition: transform var(--duration) ease-in-out;
+      overflow: visible;
+    }
+
+    .envelope-front,
+    .envelope-back {
+      position: relative;
+      grid-area: 1 / 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      overflow: visible;
+    }
+
+    /* FRENTE */
+    .envelope-front {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(145deg, #c15a77, #9e3956);
+      color: white;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .envelope-front::before {
+      content: "♥";
+      position: absolute;
+      font-family: "Times New Roman", serif;
+      font-size: 220px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.045);
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    .envelope-front::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .address {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      line-height: 1.7;
+      padding: 18px 30px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(3px);
+      text-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+    }
+
+    .address p { margin: 5px; }
+
+    .address p:first-child span:first-child,
+    .address p:last-child span:first-child {
+      opacity: 0.70;
+      font-size: 0.82em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .address p:first-child span:last-child {
+      font-family: "Great Vibes", cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fff1f5;
+    }
+
+    .address p:last-child span:last-child {
+      font-family: "Great Vibes", cursive;
+      font-size: 2rem;
+      color: #ffd8e3;
+    }
+
+    /* REVERSO (BOLSILLO) */
+    .envelope-back {
+      transform: rotateY(180deg);
+      background: var(--envelope-bg);
+      overflow: visible;
+    }
+
+    /* Bolsillo frontal del sobre (Capas laterales e inferior) */
+    .envelope-back::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 5; /* Cubre la carta cuando está DENTRO */
+      background: conic-gradient(
+        transparent 60deg,
+        var(--envelope-bg-side) 60deg 120deg,
+        var(--envelope-bg-bottom) 120deg 240deg,
+        var(--envelope-bg-side) 240deg 300deg,
+        transparent 300deg
+      );
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    /* SOLAPA SUPERIOR */
+    .top-fold {
+      position: absolute;
+      inset: 0;
+      z-index: 10; /* Tapa todo cuando está cerrada */
+      background: linear-gradient(145deg, #d77b94, #b84b69);
+      clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
+      transform-origin: top;
+      transition: transform var(--duration) ease-in-out, z-index 0s var(--duration);
+      pointer-events: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* =====================================================
+       CARTA
+    ===================================================== */
+
+    .letter {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      width: 90%;
+      height: 170px;
+      transform: translateX(-50%) translateY(0);
+      z-index: 3; /* Detrás del bolsillo (z-index: 5) */
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      background: linear-gradient(145deg, #fffefd, #fff8f4);
+      color: var(--letter-text);
+      box-shadow: 0 8px 25px rgba(91, 27, 45, 0.16);
+      border-radius: 5px;
+      overflow: hidden;
+
+      /* Transiciones suaves */
+      transition:
+        height var(--duration) ease-in-out,
+        transform var(--duration) ease-in-out;
+    }
+
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(177, 73, 99, 0.20);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .letter::after {
+      content: "♡";
+      position: absolute;
+      top: 8px;
+      right: 17px;
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+      color: rgba(173, 61, 89, 0.35);
+      pointer-events: none;
+    }
+
+    .letter p {
+      margin: 0;
+      max-width: 90%;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.08rem;
+      line-height: 1.45;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight {
+      display: block;
+      margin-top: 10px;
+      font-family: "Great Vibes", cursive;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #a52d50;
+      letter-spacing: 0.5px;
+    }
+
+    .custom-image {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 5px 8px rgba(125, 39, 65, 0.15));
+    }
+
+    /* =====================================================
+       ESTADOS DE ANIMACIÓN
+    ===================================================== */
+
+    .envelope.open .envelope-inner {
+      transform: rotateY(180deg);
+    }
+
+    .envelope.open-flap .top-fold {
+      transform: rotateX(180deg);
+      z-index: 1;
+      transition: transform var(--duration) ease-in-out, z-index 0s;
+    }
+
+    /* Cuando la carta ya salió por completo, pasa al frente */
+    .envelope.open-letter .letter {
+      height: 300px;
+      transform: translateX(-50%) translateY(-110px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 15;
+    }
+
+    /* Clase auxiliar para cuando está entrando de regreso al sobre */
+    .envelope.closing-letter .letter {
+      z-index: 3 !important; /* Pasa tras el bolsillo antes de empezar a bajar */
+    }
+
+    .letter::-webkit-scrollbar { width: 5px; }
+    .letter::-webkit-scrollbar-track { background: rgba(170, 70, 95, 0.05); }
+    .letter::-webkit-scrollbar-thumb {
+      background: rgba(170, 70, 95, 0.25);
+      border-radius: 10px;
+    }
+
+    .letter-button {
+      margin-top: 70px;
+      padding: 13px 32px;
+      border: 1px solid rgba(255, 210, 220, 0.30);
+      border-radius: 50px;
+      background: linear-gradient(135deg, #d95c7c, #a82f52);
+      color: white;
+      font-family: "Quicksand", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(120, 31, 57, 0.25);
+      position: relative;
+      z-index: 20;
+    }
+
+    .letter-button.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      box-shadow: 0 10px 25px rgba(180, 45, 85, 0.35);
+    }
+
+    .letter-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(220, 70, 110, 0.45);
+    }
+
+    .letter-button:active { transform: scale(0.97); }
+
+    .falling {
+      position: fixed;
+      top: -30px;
+      pointer-events: none;
+      z-index: 999;
+      animation: fall linear forwards;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+    }
+
+    @keyframes fall {
+      from { transform: translateY(0) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      body { overflow: hidden; }
+      .container { padding-top: 100px; padding-bottom: 90px; }
+      .envelope { --envelope-width: 310px; --envelope-height: 185px; }
+      .envelope.open-letter .letter {
+        height: 280px;
+        transform: translateX(-50%) translateY(-100px);
+      }
+      .address { padding: 14px 20px; }
+      .address p:first-child span:last-child { font-size: 1.55rem; }
+      .address p:last-child span:last-child { font-size: 1.7rem; }
+      .letter { padding: 20px 15px; }
+      .letter p { font-size: 1rem; line-height: 1.45; max-width: 95%; }
+      .highlight { font-size: 1.8rem; }
+      .custom-image { width: 58px; height: 58px; }
+      .season-message { bottom: calc(100% + 30px); font-size: 0.72rem; letter-spacing: 2px; }
+      .season-message span { font-size: 1.7rem; }
+      .letter-button { margin-top: 55px; font-size: 0.9rem; }
+    }
+  </style>
 </head>
-<style>
-  @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap);
 
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Quicksand", sans-serif;
-  background: linear-gradient(to bottom right, #000000, #000000, #000000);
-  color: #ff2222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 1rem;
-  margin-top: 50px;
-  overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.envelope {
-  --duration: 1000ms;
-
-  --shadow-width: calc(var(--envelope-width) * 0.85);
-  --shadow-blur: 15px;
-
-  --envelope-width: 300px;
-  --envelope-height: 175px;
-  --envelope-clr-bg: #dd9933;
-  --envelope-clr-bg-side: #db901f;
-  --envelope-clr-bg-bottom: #dd9933;
-  --envelope-clr-bg-top: #dd9933;
-  --envelope-clr-txt: #ffffff;
-
-  --envelope-transform: rotateY(0deg);
-  --envelope-transform-hover: rotateY(180deg);
-  --evelope-rotate-delay: calc(var(--duration) / 1);
-  --evelope-rotate-delay-hover: 0ms;
-
-  --letter-clr-bg: #fff;
-  --letter-clr-text: #b91300;
-  --letter-font-size: 1rem;
-  --letter-delay: 0ms;
-  --letter-delay-hover: calc(var(--duration) * 1.25);
-
-  --letter-height: calc(var(--envelope-height) - 2rem);
-  --letter-height-hover: calc(var(--envelope-height) * 1.75);
-
-  --fold-rotate: rotateX(0deg);
-  --fold-zindex-hover: 0;
-  --fold-rotate-hover: rotateX(180deg);
-  --fold-delay: calc(var(--duration) / 2);
-  --fold-delay-hover: calc(var(--duration) * .75);
-
-  --front-font-size: 1rem;
-  --snowman-width: 50px;
-  --bells-width: 30px;
-
-  position: relative;
-  height: var(--envelope-height);
-  width: var(--envelope-width);
-  perspective: 1000px;
-  cursor: pointer;
-}
-
-@media (min-width: 720px) {
-  .envelope {
-    --envelope-width: 600px;
-    --envelope-height: 350px;
-    --letter-font-size: 1.6rem;
-    --snowman-width: 130px;
-    --bells-width: 60px;
-    --front-font-size: 1.25rem;
-  }
-}
-
-/* sombra */
-.envelope::after {
-  content: "";
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  width: var(--shadow-width);
-  height: 40px;
-  transition: var(--duration) ease-in-out;
-  transition-delay: var(--evelope-rotate-delay);
-  transform: var(--shadow-transform);
-  translate: -50% 0;
-  border-radius: 50%;
-  background: rgba(71, 5, 5, 0.432);
-  filter: blur(var(--shadow-blur));
-}
-
-/* estado abierto al hacer click */
-.envelope.open {
-  --envelope-transform: var(--envelope-transform-hover, 0deg);
-  --evelope-rotate-delay: var(--evelope-rotate-delay-hover);
-  --shadow-transform: rotateY(180deg);
-  --fold-rotate: var(--fold-rotate-hover);
-  --fold-delay: var(--fold-delay-hover);
-  --fold-zindex: var(--fold-zindex-hover);
-  --letter-height: var(--letter-height-hover);
-  --letter-delay: var(--letter-delay-hover);
-}
-
-.envelope-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: var(--duration) ease-in-out;
-  transition-delay: var(--evelope-rotate-delay);
-  transform-style: preserve-3d;
-  transform: var(--envelope-transform);
-  display: grid;
-}
-
-.envelope-front,
-.envelope-back {
-  position: relative;
-  grid-area: 1/1;
-  width: 100%;
-  height: 100%;
-  background-color: var(--envelope-clr-bg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  perspective: 1000px;
-  isolation: isolate;
-  border-radius: 17px;
-}
-
-.envelope-front {
-  color: var(--envelope-clr-txt);
-  display: grid;
-  place-content: center;
-}
-.envelope-front .postage-stamp {
-  position: absolute;
-  top: 1em;
-  right: 0.5em;
-  width: 15%;
-}
-.envelope-front .address {
-  text-align: left;
-  font-size: var(--front-font-size);
-}
-.envelope-front .address > p > span:first-child {
-  font-family: system-ui;
-  font-weight: 200;
-}
-.envelope-front .address > p > span:last-of-type {
-  font-weight: 800;
-}
-
-.envelope-back {
-  transform: rotateY(180deg);
-}
-/* pliegues */
-.envelope-back::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background-image: conic-gradient(
-    transparent 60deg,
-    var(--envelope-clr-bg-side) 60deg 120deg,
-    var(--envelope-clr-bg-bottom) 120deg 240deg,
-    var(--envelope-clr-bg-side) 240deg 300deg,
-    transparent 300deg
-
-  );
-  border-radius: 17px;
-}
-.envelope-back .top-fold {
-  position: absolute;
-  inset: 0;
-  z-index: var(--fold-zindex, 10);
-  background-color: var(--envelope-clr-bg-top);
-  clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
-  transform: var(--fold-rotate);
-  transform-origin: top;
-  top: 9px;
-  transition: var(--duration) ease-in-out;
-  transition-delay: var(--fold-delay);
-}
-
-.letter {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  width: 90%;
-  height: var(--letter-height);
-  font-size: var(--letter-font-size);
-  transform: translateX(-50%);
-  background: var(--letter-clr-bg);
-  z-index: 2;
-  padding: 2em 3em;
-  display: flex;
-  flex-direction: column;
-  gap: -2rem;
-  align-items: center;
-  text-align: center;
-  transition: var(--duration) ease-in-out;
-  transition-delay: var(--letter-delay);
-  overflow: hidden;
-}
-.letter p {
-  margin: 0;
-  font-weight: bold;
-  width: 32ch;
-  color: var(--letter-clr-text);
-}
-
-.custom-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-.custom-image2 {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-}
-
-.highlight {
-  display: block;
-  margin-top: 10px;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.letter-button {
-  display: none; /* oculto hasta que la carta se abra */
-  margin-top: 50px;
-  margin-left: 235px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #ff8c00, #ffd700);
-  color: #000;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-  transition: transform 0.2s ease;
-  text-align: center;
-}
-
-.letter-button:hover {
-  transform: scale(1.1);
-}
-
-
-.button-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.letter-button {
-  display: none; /* oculto hasta que la carta se abra */
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #ff8c00, #ffd700);
-  color: #000;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(243, 229, 152, 0.8);
-  transition: transform 0.2s ease, opacity 0.5s ease;
-  opacity: 0; /* para animación */
-}
-
-.letter-button {
-  display: none;
-  opacity: 0;
-}
-
-.envelope.open ~ .letter-button {
-  display: inline-block;
-  opacity: 1;
-}
-
-
-/*corazones lluvia*/
-.heart {
-  position: fixed;
-  top: -20px;
-  font-size: 24px;
-  color: red;
-  animation: fall 3s linear forwards;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
-
-/* .centrarBoton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-} */
-
-</style>
 <body>
+
+  <div class="background-glow glow-1"></div>
+  <div class="background-glow glow-2"></div>
+
   <div class="container">
-    <div class="envelope">
+
+    <div class="season-message">
+      Una pequeña sorpresa para ti
+      <span>En esta primavera... 🌷</span>
+    </div>
+
+    <div class="envelope" id="envelope">
       <div class="envelope-inner">
 
-        <!-- Frente de la carta -->
+        <!-- FRENTE DEL SOBRE -->
         <div class="envelope-front">
-          <div class="postage-stamp">
-            <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 300 300" xml:space="preserve">
-              <path d="M253.98,257.652c0-8.568,8.568-17.748,17.136-18.361c-1.224-4.895-1.224-10.402-0.611-15.299 ..."></path>
-            </svg>
-          </div>
           <div class="address">
-            <p><span>Para:</span> <span>❤️Greysi❤️</span></p>
-            <p><span>De:</span> <span>Willian Rene</span></p>
+            <p>
+              <span>Para:</span><br>
+              <span>❤️ Greysi Mabel ❤️</span>
+            </p>
+            <p>
+              <span>De:</span><br>
+              <span>Willian Rene</span>
+            </p>
           </div>
         </div>
 
-        <!-- Reverso con la carta -->
+        <!-- REVERSO DEL SOBRE -->
         <div class="envelope-back">
           <div class="top-fold"></div>
-          <div class="letter">
-            <img src="https://img.freepik.com/vector-premium/pulgar-dedos-imprimir-marca-huella-dactilar-amor-corazon_53500-1839.jpg"
-                 alt="love1" class="custom-image">
 
-            <p>Para la chica mas hermosa, tierna y educadita 👑❤️ <span class="highlight">¡Te Admiro!</span></p>
-
-            <img src="mochixd.png" alt="love2" class="custom-image2">
+          <!-- CARTA -->
+          <div class="letter" id="letter">
+            <img src="https://img.freepik.com/vector-premium/pulgar-dedos-imprimir-marca-huella-dactilar-amor-corazon_53500-1839.jpg" alt="Corazón" class="custom-image">
+            <p>
+              Para una dama muy especial... 🌷<br><br>
+              
+              Eres como la Primavera:
+              <span class="highlight">Cálida y Hermosa. 🌷❤️</span>
+            </p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- 🌼 Botón debajo de la carta -->
-    <p></p>
-    <p></p>
-    <button id="goToFlowers" class="letter-button"> Para ti 🌻</button>
+    <button id="goToFlowers" class="letter-button">
+      Haz Clic para ver tu ramo de flores Amarillas 🌷
+    </button>
+
   </div>
 
-  <!-- 🎵 Audio oculto -->
-
   <script>
-    const envelope = document.querySelector(".envelope");
-    const music = document.getElementById("bg-music");
+    const envelope = document.getElementById("envelope");
+    const button = document.getElementById("goToFlowers");
+    let isAnimating = false;
 
-    // Abrir/cerrar carta + reproducir música en el primer click
     envelope.addEventListener("click", () => {
-      envelope.classList.toggle("open");
+      if (isAnimating) return;
 
-      if (music.paused) {
-        music.play().catch(err => {
-          console.log("El navegador bloqueó el autoplay hasta interacción:", err);
-        });
+      const isOpen = envelope.classList.contains("open-letter");
+
+      if (!isOpen) {
+        // --- SECUENCIA DE APERTURA ---
+        isAnimating = true;
+
+        // 1. Voltear el sobre
+        envelope.classList.add("open");
+
+        // 2. Abrir la solapa
+        setTimeout(() => {
+          envelope.classList.add("open-flap");
+
+          // 3. Elevar la carta desde el interior hacia afuera
+          setTimeout(() => {
+            envelope.classList.add("open-letter");
+            button.classList.add("visible");
+            createFallingElements();
+            isAnimating = false;
+          }, 950);
+
+        }, 950);
+
+      } else {
+        // --- SECUENCIA DE CIERRE (INTRODUCIR CARTA) ---
+        closeEnvelope();
       }
     });
 
-    // Redirigir al index1 al tocar el botón
-    document.getElementById("goToFlowers").addEventListener("click", () => {
-      window.location.href = "flower.html";
+    function closeEnvelope(callback) {
+      isAnimating = true;
+      button.classList.remove("visible");
+
+      // Paso clave: Colocar la carta detrás del bolsillo ANTES de deslizarla hacia abajo
+      envelope.classList.add("closing-letter");
+      envelope.classList.remove("open-letter");
+
+      // 1. La carta se desliza hacia abajo e ingresa dentro del sobre
+      setTimeout(() => {
+        envelope.classList.remove("closing-letter");
+        envelope.classList.remove("open-flap"); // 2. Se cierra la solapa
+
+        // 3. Voltear el sobre al frente
+        setTimeout(() => {
+          envelope.classList.remove("open");
+          isAnimating = false;
+          if (callback) callback();
+        }, 950);
+
+      }, 950);
+    }
+
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeEnvelope(() => {
+        window.location.href = "flower.html";
+      });
     });
+
+    function createFallingElements() {
+      const elements = ["🌸", "🌷", "🌹", "🌺", "💕", "💗", "♡", "❤️"];
+      for (let i = 0; i < 25; i++) {
+        const element = document.createElement("div");
+        element.className = "falling";
+        element.textContent = elements[Math.floor(Math.random() * elements.length)];
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.fontSize = (Math.random() * 15 + 15) + "px";
+        element.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        element.style.animationDelay = Math.random() * 2 + "s";
+        document.body.appendChild(element);
+
+        setTimeout(() => {
+          element.remove();
+        }, 7000);
+      }
+    }
   </script>
+
 </body>
+
 </html>
