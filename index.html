@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Para Greysi Mabel 🌷❤️</title>
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html, body {
       width: 100%;
-      min-height: 100%;
-      margin: 0;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      touch-action: manipulation;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -37,6 +37,7 @@
         radial-gradient(circle at 50% 100%, rgba(183, 67, 98, 0.22), transparent 35%),
         linear-gradient(135deg, #17070e 0%, #2d0b18 45%, #16060d 100%);
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
 
     body::before {
@@ -52,114 +53,106 @@
 
     .background-glow {
       position: fixed;
-      width: 500px;
-      height: 500px;
+      width: min(500px, 80vw);
+      height: min(500px, 80vw);
       border-radius: 50%;
       pointer-events: none;
-      filter: blur(90px);
+      filter: blur(80px);
       z-index: 0;
     }
 
-    .glow-1 {
-      top: -250px;
-      left: -180px;
-      background: rgba(255, 105, 150, 0.12);
-    }
+    .glow-1 { top: -200px; left: -150px; background: rgba(255, 105, 150, 0.14); }
+    .glow-2 { right: -180px; bottom: -200px; background: rgba(255, 130, 170, 0.12); }
 
-    .glow-2 {
-      right: -200px;
-      bottom: -260px;
-      background: rgba(255, 130, 170, 0.10);
-    }
-
-    .container {
+    .main-wrapper {
       position: relative;
       z-index: 5;
       width: 100%;
-      min-height: 100vh;
+      height: 100%;
+      height: 100dvh;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      padding-top: 140px;
-      padding-bottom: 80px;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(12px, 2.5vh, 25px) clamp(12px, 3vw, 24px);
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .season-message {
-      position: absolute;
-      bottom: calc(100% + 45px);
-      width: 100%;
+    .header-message {
       text-align: center;
-      color: rgba(255, 235, 241, 0.82);
-      font-size: 0.85rem;
-      letter-spacing: 3px;
+      color: rgba(255, 235, 241, 0.88);
+      font-size: clamp(0.7rem, 2vw, 0.88rem);
+      letter-spacing: 2px;
       text-transform: uppercase;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+      margin-top: clamp(2px, 1vh, 10px);
+      flex-shrink: 0;
     }
 
-    .season-message::before {
+    .header-message::before {
       content: "♡";
       display: block;
-      margin-bottom: 4px;
-      font-size: 1.2rem;
+      margin-bottom: 2px;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
       color: #e9a0b3;
     }
 
-    .season-message span {
+    .header-message span {
       display: block;
-      margin-top: 7px;
+      margin-top: 4px;
       font-family: "Great Vibes", cursive;
-      font-size: 2.1rem;
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
       letter-spacing: 0;
       text-transform: none;
       color: #f4b6c7;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
-    /* =====================================================
-       SOBRE CON TRANSICIONES SUAVES Y LENTAS
-    ===================================================== */
+    .envelope-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+    }
 
     .envelope {
-      --duration: 1400ms; /* Duración más lenta para rotación y solapa */
-      --envelope-width: 330px;
-      --envelope-height: 195px;
+      --duration: 1400ms;
+      /* Cálculo dinámico de ancho y alto proporcional a la pantalla */
+      --envelope-w: min(88vw, 480px, 60vh);
+      --envelope-h: calc(var(--envelope-w) * 0.61);
+      --letter-travel: calc(var(--envelope-h) * -0.72);
 
       --envelope-bg: #b54d6b;
       --envelope-bg-side: #963651;
       --envelope-bg-bottom: #a8405e;
-
-      --letter-bg: #fffaf7;
       --letter-text: #7d2741;
 
       position: relative;
-      width: var(--envelope-width);
-      height: var(--envelope-height);
+      width: var(--envelope-w);
+      height: var(--envelope-h);
       perspective: 1200px;
       cursor: pointer;
-      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.40));
-      overflow: visible;
+      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
       z-index: 10;
-    }
-
-    @media (min-width: 720px) {
-      .envelope {
-        --envelope-width: 540px;
-        --envelope-height: 320px;
-      }
+      /* Compensación vertical para centrar el movimiento de subida de la carta */
+      margin-top: calc(var(--envelope-h) * 0.28);
     }
 
     .envelope::after {
       content: "";
       position: absolute;
-      top: 108%;
+      top: 105%;
       left: 50%;
-      width: 80%;
-      height: 38px;
+      width: 85%;
+      height: 28px;
       transform: translateX(-50%);
       border-radius: 50%;
       background: rgba(0, 0, 0, 0.45);
-      filter: blur(16px);
+      filter: blur(14px);
       z-index: -1;
     }
 
@@ -170,21 +163,18 @@
       display: grid;
       transform-style: preserve-3d;
       transition: transform var(--duration) cubic-bezier(0.25, 1, 0.5, 1);
-      overflow: visible;
     }
 
-    .envelope-front,
+    .envelope-front, 
     .envelope-back {
       position: relative;
       grid-area: 1 / 1;
       width: 100%;
       height: 100%;
-      border-radius: 20px;
+      border-radius: clamp(12px, 3vw, 20px);
       backface-visibility: hidden;
-      overflow: visible;
     }
 
-    /* FRENTE DEL SOBRE */
     .envelope-front {
       display: flex;
       justify-content: center;
@@ -194,14 +184,14 @@
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.25),
         inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-        0 15px 30px rgba(0, 0, 0, 0.15);
+        0 12px 25px rgba(0, 0, 0, 0.15);
     }
 
     .envelope-front::before {
       content: "♥";
       position: absolute;
       font-family: "Times New Roman", serif;
-      font-size: 220px;
+      font-size: clamp(110px, 30vw, 220px);
       line-height: 1;
       color: rgba(255, 255, 255, 0.045);
       transform: rotate(-8deg);
@@ -211,9 +201,9 @@
     .envelope-front::after {
       content: "";
       position: absolute;
-      inset: 9px;
+      inset: clamp(6px, 1.5vw, 10px);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 14px;
+      border-radius: clamp(8px, 2vw, 14px);
       pointer-events: none;
     }
 
@@ -221,43 +211,40 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      line-height: 1.7;
-      padding: 18px 30px;
-      border-radius: 15px;
+      line-height: 1.5;
+      padding: clamp(10px, 2.5vw, 18px) clamp(16px, 4vw, 30px);
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.10);
       backdrop-filter: blur(3px);
       text-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
     }
 
-    .address p { margin: 5px; }
-
-    .address p:first-child span:first-child,
-    .address p:last-child span:first-child {
+    .address p { margin: 2px 0; }
+    
+    .address p span:first-child {
       opacity: 0.70;
-      font-size: 0.82em;
+      font-size: clamp(0.65rem, 1.8vw, 0.82rem);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .address p:first-child span:last-child {
       font-family: "Great Vibes", cursive;
-      font-size: 2rem;
+      font-size: clamp(1.3rem, 3.8vw, 2rem);
       font-weight: 400;
       color: #fff1f5;
     }
 
     .address p:last-child span:last-child {
       font-family: "Great Vibes", cursive;
-      font-size: 2rem;
+      font-size: clamp(1.3rem, 3.8vw, 2rem);
       color: #ffd8e3;
     }
 
-    /* REVERSO DEL SOBRE (BOLSILLO) */
     .envelope-back {
       transform: rotateY(180deg);
       background: var(--envelope-bg);
-      overflow: visible;
     }
 
     .envelope-back::after {
@@ -272,11 +259,10 @@
         var(--envelope-bg-side) 240deg 300deg,
         transparent 300deg
       );
-      border-radius: 20px;
+      border-radius: clamp(12px, 3vw, 20px);
       pointer-events: none;
     }
 
-    /* SOLAPA SUPERIOR */
     .top-fold {
       position: absolute;
       inset: 0;
@@ -289,38 +275,32 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
 
-    /* =====================================================
-       CARTA INTERIOR CON DESPLAZAMIENTO FLUIDO Y LENTO
-    ===================================================== */
-
     .letter {
       position: absolute;
-      bottom: 8px;
+      bottom: 6px;
       left: 50%;
       width: 92%;
-      height: 270px;
+      height: 92%;
       transform: translateX(-50%) translateY(0);
       z-index: 3;
-      padding: 25px 20px;
+      padding: clamp(10px, 2.5vw, 20px) clamp(8px, 2vw, 16px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      gap: 6px;
+      gap: clamp(2px, 1vh, 6px);
       background: linear-gradient(145deg, #fffefd, #fff8f4);
       color: var(--letter-text);
       border-radius: 8px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-
-      /* Movimiento vertical de 1.6 segundos con curva armónica */
       transition: transform 1600ms cubic-bezier(0.25, 1, 0.35, 1);
     }
 
     .letter::before {
       content: "";
       position: absolute;
-      inset: 10px;
+      inset: clamp(5px, 1.2vw, 10px);
       border: 1px solid rgba(177, 73, 99, 0.20);
       border-radius: 5px;
       pointer-events: none;
@@ -329,20 +309,20 @@
     .letter::after {
       content: "♡";
       position: absolute;
-      top: 12px;
-      right: 18px;
+      top: clamp(6px, 1.5vw, 12px);
+      right: clamp(10px, 2vw, 18px);
       font-family: "Great Vibes", cursive;
-      font-size: 28px;
+      font-size: clamp(16px, 3.5vw, 26px);
       color: rgba(173, 61, 89, 0.35);
       pointer-events: none;
     }
 
     .letter p {
       margin: 0;
-      max-width: 90%;
+      max-width: 95%;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
-      line-height: 1.45;
+      font-size: clamp(0.82rem, 2.2vw, 1.1rem);
+      line-height: 1.38;
       font-weight: 600;
       position: relative;
       z-index: 2;
@@ -350,66 +330,57 @@
 
     .highlight {
       display: block;
-      margin-top: 8px;
+      margin-top: clamp(2px, 0.8vh, 6px);
       font-family: "Great Vibes", cursive;
-      font-size: 2.2rem;
+      font-size: clamp(1.35rem, 3.8vw, 2.1rem);
       font-weight: 400;
       color: #a52d50;
-      letter-spacing: 0.5px;
     }
 
     .custom-image {
-      width: 60px;
-      height: 60px;
+      width: clamp(34px, 7vw, 52px);
+      height: clamp(34px, 7vw, 52px);
       object-fit: contain;
       border-radius: 50%;
-      margin-bottom: 2px;
       position: relative;
       z-index: 2;
-      filter: drop-shadow(0 4px 6px rgba(125, 39, 65, 0.15));
+      filter: drop-shadow(0 3px 5px rgba(125, 39, 65, 0.15));
     }
 
-    /* =====================================================
-       ESTADOS DE ANIMACIÓN
-    ===================================================== */
-
-    .envelope.open .envelope-inner {
-      transform: rotateY(180deg);
+    .envelope.open .envelope-inner { 
+      transform: rotateY(180deg); 
     }
 
-    .envelope.open-flap .top-fold {
-      transform: rotateX(180deg);
-      z-index: 1;
+    .envelope.open-flap .top-fold { 
+      transform: rotateX(180deg); 
+      z-index: 1; 
     }
 
-    /* La carta sube suavemente hasta salir por completo */
-    .envelope.open-letter .letter {
-      transform: translateX(-50%) translateY(-220px);
+    .envelope.open-letter .letter { 
+      transform: translateX(-50%) translateY(var(--letter-travel)); 
     }
-
-    /* =====================================================
-       BOTÓN Y ELEMENTOS DE CORAZONES
-    ===================================================== */
 
     .letter-button {
-      margin-top: 50px;
-      padding: 13px 32px;
+      padding: clamp(10px, 2vw, 13px) clamp(20px, 4vw, 32px);
       border: 1px solid rgba(255, 210, 220, 0.30);
       border-radius: 50px;
       background: linear-gradient(135deg, #d95c7c, #a82f52);
       color: white;
       font-family: "Quicksand", sans-serif;
-      font-size: 1rem;
+      font-size: clamp(0.78rem, 2vw, 0.98rem);
       font-weight: 700;
-      letter-spacing: 0.3px;
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(10px);
+      transform: translateY(12px);
       transition: opacity 1s ease, transform 1s ease, box-shadow 0.3s ease;
       box-shadow: 0 8px 20px rgba(120, 31, 57, 0.25);
       position: relative;
       z-index: 20;
+      text-align: center;
+      max-width: 90%;
+      margin-bottom: clamp(6px, 1.5vh, 16px);
+      flex-shrink: 0;
     }
 
     .letter-button.visible {
@@ -420,11 +391,13 @@
     }
 
     .letter-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(220, 70, 110, 0.45);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(220, 70, 110, 0.45);
     }
 
-    .letter-button:active { transform: scale(0.97); }
+    .letter-button:active { 
+      transform: scale(0.97); 
+    }
 
     .falling {
       position: fixed;
@@ -439,25 +412,6 @@
       from { transform: translateY(0) rotate(0deg); opacity: 1; }
       to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
-
-    @media (max-width: 600px) {
-      body { overflow: hidden; }
-      .container { padding-top: 130px; padding-bottom: 70px; }
-      .envelope { --envelope-width: 310px; --envelope-height: 185px; }
-      .letter { height: 230px; padding: 18px 12px; }
-      .envelope.open-letter .letter {
-        transform: translateX(-50%) translateY(-170px);
-      }
-      .address { padding: 14px 20px; }
-      .address p:first-child span:last-child { font-size: 1.55rem; }
-      .address p:last-child span:last-child { font-size: 1.7rem; }
-      .letter p { font-size: 0.95rem; line-height: 1.4; max-width: 95%; }
-      .highlight { font-size: 1.7rem; }
-      .custom-image { width: 50px; height: 50px; }
-      .season-message { bottom: calc(100% + 30px); font-size: 0.72rem; letter-spacing: 2px; }
-      .season-message span { font-size: 1.7rem; }
-      .letter-button { margin-top: 40px; font-size: 0.88rem; }
-    }
   </style>
 </head>
 
@@ -466,45 +420,47 @@
   <div class="background-glow glow-1"></div>
   <div class="background-glow glow-2"></div>
 
-  <div class="container">
+  <div class="main-wrapper">
 
-    <div class="season-message">
+    <div class="header-message">
       Una pequeña sorpresa para ti
       <span>En esta primavera... 🌷</span>
     </div>
 
-    <div class="envelope" id="envelope">
-      <div class="envelope-inner">
+    <div class="envelope-stage">
+      <div class="envelope" id="envelope">
+        <div class="envelope-inner">
 
-        <!-- FRENTE DEL SOBRE -->
-        <div class="envelope-front">
-          <div class="address">
-            <p>
-              <span>Para:</span><br>
-              <span>❤️ Greysi Mabel ❤️</span>
-            </p>
-            <p>
-              <span>De:</span><br>
-              <span>Willian Rene</span>
-            </p>
+          <!-- FRENTE DEL SOBRE -->
+          <div class="envelope-front">
+            <div class="address">
+              <p>
+                <span>Para:</span><br>
+                <span>❤️ Greysi Mabel ❤️</span>
+              </p>
+              <p>
+                <span>De:</span><br>
+                <span>Willian Rene</span>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- REVERSO DEL SOBRE -->
-        <div class="envelope-back">
-          <div class="top-fold"></div>
+          <!-- REVERSO DEL SOBRE -->
+          <div class="envelope-back">
+            <div class="top-fold"></div>
 
-          <!-- CARTA INTERIOR -->
-          <div class="letter">
-            <img src="https://img.freepik.com/vector-premium/pulgar-dedos-imprimir-marca-huella-dactilar-amor-corazon_53500-1839.jpg" alt="Corazón" class="custom-image">
-            <p>
-              Para una dama muy especial... 🌷<br><br>
-              Eres como la Primavera:
-              <span class="highlight">Cálida y Hermosa. 🌷❤️</span>
-            </p>
+            <!-- CARTA INTERIOR -->
+            <div class="letter">
+              <img src="https://img.freepik.com/vector-premium/pulgar-dedos-imprimir-marca-huella-dactilar-amor-corazon_53500-1839.jpg" alt="Corazón" class="custom-image" onerror="this.src='https://placehold.co/60x60/f4b6c7/7d2741?text=♥'">
+              <p>
+                Para una dama muy especial... 🌷<br>
+                Eres como la Primavera:
+                <span class="highlight">Cálida y Hermosa. 🌷❤️</span>
+              </p>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
 
@@ -519,10 +475,7 @@
     const button = document.getElementById("goToFlowers");
     let isAnimating = false;
 
-    /* =====================================================
-       CONTROL SINCRO CON TIEMPOS SUAVES Y ARMONIOSOS
-    ===================================================== */
-
+    /* Sincronización exacta con tiempos armónicos lentos */
     envelope.addEventListener("click", () => {
       if (isAnimating) return;
 
@@ -532,11 +485,11 @@
         // --- SECUENCIA DE APERTURA ---
         isAnimating = true;
 
-        // 1. Giro pausado del sobre (1300ms)
+        // 1. Giro pausado del sobre (1200ms)
         envelope.classList.add("open");
 
         setTimeout(() => {
-          // 2. Apertura fluida de la solapa (1300ms)
+          // 2. Apertura fluida de la solapa (1200ms)
           envelope.classList.add("open-flap");
 
           setTimeout(() => {
@@ -562,12 +515,12 @@
     function closeEnvelope(callback) {
       isAnimating = true;
 
-      // 1. Ocultar botón y deslizar carta de vuelta hacia abajo paulatinamente
+      // 1. Ocultar botón y deslizar carta hacia abajo
       button.classList.remove("visible");
       envelope.classList.remove("open-letter");
 
       setTimeout(() => {
-        // 2. Bajar la solapa pausadamente
+        // 2. Bajar la solapa
         envelope.classList.remove("open-flap");
 
         setTimeout(() => {
@@ -581,7 +534,7 @@
 
         }, 1200);
 
-      }, 1400); // Da tiempo a que la carta ingrese por completo
+      }, 1400);
     }
 
     button.addEventListener("click", (event) => {
@@ -593,12 +546,14 @@
 
     function createFallingElements() {
       const elements = ["🌸", "🌷", "🌹", "🌺", "💕", "💗", "♡", "❤️"];
-      for (let i = 0; i < 25; i++) {
+      const particleCount = window.innerWidth < 600 ? 18 : 26;
+
+      for (let i = 0; i < particleCount; i++) {
         const element = document.createElement("div");
         element.className = "falling";
         element.textContent = elements[Math.floor(Math.random() * elements.length)];
         element.style.left = Math.random() * 100 + "vw";
-        element.style.fontSize = (Math.random() * 15 + 15) + "px";
+        element.style.fontSize = (Math.random() * 10 + 14) + "px";
         element.style.animationDuration = (Math.random() * 3 + 4) + "s";
         element.style.animationDelay = Math.random() * 2 + "s";
         document.body.appendChild(element);
@@ -609,7 +564,5 @@
       }
     }
   </script>
-
 </body>
-
 </html>
